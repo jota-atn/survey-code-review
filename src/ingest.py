@@ -12,7 +12,7 @@ if not infile.exists():
     sys.exit(1)
 
 df = pd.read_csv(infile)
-out_path = Path("data/raw") / infile.name
+out_path = Path("data/raw") / "responses.csv"
 out_path.parent.mkdir(parents=True, exist_ok=True)
 df.to_csv(out_path, index=False)
 print(f"Arquivo salvo em: {out_path} ({df.shape[0]} linhas)")
