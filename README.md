@@ -26,7 +26,7 @@ survey-code-review/
 ## Instalação
 1. Clone este repositório:
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/jota-atn/survey-code-review.git
 cd survey-code-review
 ```
 2. Crie e ative um ambiente virtual:
