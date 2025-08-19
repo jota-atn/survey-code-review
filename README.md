@@ -42,7 +42,7 @@ Para configurar o projeto localmente, siga os passos abaixo.
 
 ### 1. Clonar o Repositório
 ```bash
-git clone [https://github.com/jota-atn/survey-code-review.git](https://github.com/jota-atn/survey-code-review.git)
+git clone https://github.com/jota-atn/survey-code-review.git
 cd survey-code-review
 ```
 
