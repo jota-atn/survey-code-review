@@ -32,6 +32,12 @@ def display_sidebar(responses_analysis_df):
     )
     return vinculos, papeis
 
+def filter_data(df: pd.DataFrame, vinculos_selecionados: list, papeis_selecionados: list) -> pd.DataFrame:
+    return df[
+        df['vinculo'].isin(vinculos_selecionados) & 
+        df['participou_role'].isin(papeis_selecionados)
+    ]
+
 def display_main_content(responses_analysis_df):
     st.subheader("📋 Estatísticas Descritivas")
     st.write(responses_analysis_df.describe())
@@ -69,15 +75,12 @@ def main():
 
     vinculos_selecionados, papeis_selecionados = display_sidebar(responses_analysis_df_original)
 
-    filtered_responses_analysis_df = responses_analysis_df_original[
-        responses_analysis_df_original['vinculo'].isin(vinculos_selecionados) & 
-        responses_analysis_df_original['participou_role'].isin(papeis_selecionados)
-    ]
+    filtered_df = filter_data(responses_analysis_df_original, vinculos_selecionados, papeis_selecionados)
 
-    if filtered_responses_analysis_df.empty:
+    if filtered_df.empty:
         st.warning("Nenhum dado corresponde aos filtros selecionados. Por favor, ajuste os filtros na barra lateral.")
     else:
-        display_main_content(filtered_responses_analysis_df)
+        display_main_content(filtered_df)
 
 if __name__ == "__main__":
     main()
