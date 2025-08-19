@@ -54,3 +54,7 @@ reset:
 	@echo "--- Limpando arquivos gerados ---"
 	rm -rf __pycache__ */__pycache__ .pytest_cache
 	rm -rf $(PROCESSED_DIR)/*.* $(RAW_DIR)/*.* $(REPORTS_DIR)/*.*
+
+test:
+	@echo "--- Testando..."
+	$(PYTHON) -m pytest -v
