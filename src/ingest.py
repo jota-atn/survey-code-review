@@ -7,7 +7,7 @@ from typing import List
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def ingest_data(caminho_entrada: Path, caminho_saida: Path) -> None:
+def ingest_data(caminho_entrada: Path, caminho_saida: Path, engine: str = 'c') -> None:
     logging.info(f"Iniciando a ingestão do arquivo: {caminho_entrada}")
     
     if not caminho_entrada.exists():
@@ -15,7 +15,7 @@ def ingest_data(caminho_entrada: Path, caminho_saida: Path) -> None:
         raise FileNotFoundError(f"Arquivo de entrada não encontrado em: {caminho_entrada}")
 
     try:
-        responses_df = pd.read_csv(caminho_entrada)
+        responses_df = pd.read_csv(caminho_entrada, engine=engine)
         logging.info(f"Arquivo lido com sucesso. Encontradas {responses_df.shape[0]} linhas e {responses_df.shape[1]} colunas.")
 
         caminho_saida.parent.mkdir(parents=True, exist_ok=True)
